@@ -16,7 +16,7 @@
 
 ### 操作系统信息
 
-> ![image](https://github.com/Michaelnlearn/PlctWorking/tree/main/WorkRecord/week1/操作系统信息.png)
+> ![image](https://github.com/Michaelnlearn/PlctWorking/tree/main/WorkRecord/week1/os.png)
 
 ## 缺陷描述
 

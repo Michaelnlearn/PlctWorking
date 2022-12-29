@@ -39,7 +39,6 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 本节讲解如何使用Env工具来编译BSP工程。
 
 #### 3.1.1 编译BSP
-
 1. 准备工作1：[下载Linux环境下GCC编译工具链](https://github.com/Yaochenger/openhw-/tree/master/toolchain))，将下载的工具链放在自己的Linux环境下。
 
 2. 准备工作2：在Linux环境下安装ENV，在控制台运行以下命令。
@@ -54,14 +53,14 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 
 4. Windows环境下载RT-Thread[最新源码](https://github.com/RT-Thread/rt-thread/archive/refs/heads/master.zip)，此步骤同样可以在Linux环境下完成。
 
-5.1 Windows环境下载当前BSP根目录下打开**core-v-mvn**文件夹，并Env工具并执行以下命令编译,`scons --exec-path=工具链路径`，Windows下的工具链可以直接使用RT-Studio下载，工具链的路径依据用户的具体环境进行配置，示例命令如下：
+5.1 (Windows环境)下载当前BSP根目录下打开**core-v-mvn**文件夹，并Env工具并执行以下命令编译,`scons --exec-path=工具链路径`，Windows下的工具链可以直接使用RT-Studio下载，工具链的路径依据用户的具体环境进行配置，示例命令如下：
 
    ```shell
    scons --exec-path=D:\RT-ThreadStudio\repo\Extract\ToolChain_Support_Packages
    \RISC-V\RISC-V-GCC-RV32\2022-04-12\bin
    ```
 
-5.2 此步骤同样可以在Linux环境下完成，首先输入`source ~/.env/env.sh`激活env（具体路径根据安装自己安装环境修改），然后修改rtconfig.py中EXEC_PATHS路径改为1中gcc编译工具路径。
+5.2 (Windows环境)此步骤同样可以在Linux环境下完成，首先输入`source ~/.env/env.sh`激活env（具体路径根据安装自己安装环境修改），然后修改rtconfig.py中EXEC_PATHS路径改为1中gcc编译工具路径。
    ![rtconfig.py](figures/3.png)
 
     在指定工具链位置的同时直接编译，编译后生成rtthread.elf文件。
@@ -79,9 +78,9 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 
    7.运行以下命令生成完整可拷贝的工程 
 
-```shell
-scons --dist
-```
+   ```shell
+   scons --dist
+   ```
    ![project](figures/5.png)
 将生成的独立工程拷贝到Linux环境下。
 

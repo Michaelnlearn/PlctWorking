@@ -54,16 +54,18 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 
 4. Windows环境下载RT-Thread[最新源码](https://github.com/RT-Thread/rt-thread/archive/refs/heads/master.zip)，此步骤同样可以在Linux环境下完成。
 
-5. Windows环境下载当前BSP根目录下打开Env工具并执行以下命令编译,`scons --exec-path=工具链路径`，Windows下的工具链可以直接使用RT-Studio下载，工具链的路径依据用户的具体环境进行配置，此步骤同样可以在Linux环境下完成，示例命令如下：
+5.1 Windows环境下载当前BSP根目录下打开**core-v-mvn**文件夹，并Env工具并执行以下命令编译,`scons --exec-path=工具链路径`，Windows下的工具链可以直接使用RT-Studio下载，工具链的路径依据用户的具体环境进行配置，示例命令如下：
 
    ```shell
    scons --exec-path=D:\RT-ThreadStudio\repo\Extract\ToolChain_Support_Packages
    \RISC-V\RISC-V-GCC-RV32\2022-04-12\bin
    ```
 
-    在指定工具链位置的同时直接编译，编译后生成rtthread.elf文件。
+5.2 此步骤同样可以在Linux环境下完成，首先输入`source ~/.env/env.sh`激活env（具体路径根据安装自己安装环境修改），然后修改rtconfig.py中EXEC_PATHS路径改为1中gcc编译工具路径。
+   ![rtconfig.py](figures/3.png)
 
-   ![compilation result of core-v-mcu ](figures/compilation result of core-v-mcu .png)
+    在指定工具链位置的同时直接编译，编译后生成rtthread.elf文件。
+   ![compilation result of core-v-mcu](figures/2.png)
 
 6. 试运行rtthread.elf，将上步生成的rtthread.elf拷贝到编到编译的qemu工具的bin文件目录下，执行以下命令
 
@@ -73,14 +75,14 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 
    运行结果如下：
 
-   ![test-result1](figures/test-result1.png)
+   ![test-result1](figures/4.png)
 
    7.运行以下命令生成完整可拷贝的工程 
 
 ```shell
 scons --dist
 ```
-
+   ![project](figures/5.png)
 将生成的独立工程拷贝到Linux环境下。
 
 ### 3.2Liunx环境下编译运行工程
@@ -91,14 +93,16 @@ scons --dist
 
 ![remove ifdef](figures/remove ifdef.png)
 
+![remove end](figures/9.png)
 2.执行以下命令生成makefile工程
 
 ```shell
 scons --target=makefile
 ```
-
+![makefile](figures/8.png)
 3.在命令行输入**make**编译工程
 
+![make](figures/10.png)
 4.运行以下命令，启动qemu运行编译出rtthread.elf，`/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32`为Linux环境的工具链路径，这里设置为用户的工具链路径。
 
 ```shell
@@ -107,7 +111,7 @@ scons --target=makefile
 
 BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本信息，Tap键可以查看支持的命令，运行结果如下：
 
-![test-result2](figures/test-result2.png)
+![test-result2](figures/11.png)
 
 至此，基于Core-V-MCU的RT-Thread工程的配置与运行测试完成。
 

@@ -126,11 +126,11 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 
 4.选择`Existing Code as Makefile Project选项`
 
-![makefile project](figures/makefile project.png)
+![makefile project](figures/15.png)
 
 5.设置如下
 
-![settings](figures/settings.png)
+![settings](figures/16.png)
 
 6.工程配置设置
 
@@ -142,7 +142,7 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 
 8.清空工程编译出的文件，重新编译工程
 
-![IDE-MAKE](figures/IDE-MAKE.png)
+![IDE-MAKE](figures/17.png)
 
 9.在使用IDE编译的工程的根目录下运行以下命令，结果和**3.2.1**运行的结果一致IDE下的工程便配置完成，至此，IDE导入Core-V-MCU的RT-Thread工程的导入与运行测试完成。
 
@@ -164,19 +164,19 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 
 文件路径`OpenHW/CORE-V-SDKv0.0.0.4/registers/csr`,具体路径根据用户安装的SDK路径配置。
 
-![register file](figures/register file.png)
+![register file](figures/18.png)
 
 3.导入片上外设寄存器文件
 
 文件路径`/home/wangshun/OpenHW/CORE-V-SDKv0.0.0.4/registers/peripheral`,具体路径根据用户安装的SDK路径配置。
 
-![svd](figures/svd.png)
+![svd](figures/19.png)
 
 3.配置qemu运行环境
 
 取消`Start OpenOCD locally的勾选`，配置参数如下
 
-![debug2](figures/debug2.png)
+![debug2](figures/20.png)
 
 4.运行下述指令
 

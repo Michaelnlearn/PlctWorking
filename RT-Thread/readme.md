@@ -39,7 +39,7 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 本节讲解如何使用Env工具来编译BSP工程。
 
 #### 3.1.1 编译BSP
-1. 准备工作1：[下载Linux环境下GCC编译工具链](https://github.com/Yaochenger/openhw-/tree/master/toolchain))，将下载的工具链放在自己的Linux环境下。
+1. 准备工作1：[下载Linux环境下GCC编译工具链](https://github.com/Yaochenger/openhw-/tree/master/toolchain)，将下载的工具链放在自己的Linux环境下。
 
 2. 准备工作2：在Linux环境下安装ENV，在控制台运行以下命令。
 
@@ -60,10 +60,11 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
    \RISC-V\RISC-V-GCC-RV32\2022-04-12\bin
    ```
 
-5.2 (Windows环境)此步骤同样可以在Linux环境下完成，首先输入`source ~/.env/env.sh`激活env（具体路径根据安装自己安装环境修改），然后修改rtconfig.py中EXEC_PATHS路径改为1中gcc编译工具路径。
+5.2 (Linux环境)此步骤同样可以在Linux环境下完成，首先输入`source ~/.env/env.sh`激活env（具体路径根据安装自己安装环境修改），然后修改rtconfig.py中EXEC_PATHS路径改为1中gcc编译工具路径。
    ![rtconfig.py](figures/3.png)
 
     在指定工具链位置的同时直接编译，编译后生成rtthread.elf文件。
+    
    ![compilation result of core-v-mcu](figures/2.png)
 
 6. 试运行rtthread.elf，将上步生成的rtthread.elf拷贝到编到编译的qemu工具的bin文件目录下，执行以下命令
@@ -90,7 +91,7 @@ Core-V-MCU的目的是展示cv32e40p，这是Open Hardware Group(OpenHW)提供�
 
 1.在上文拷贝的完整的工程根目录下找到**rtconfig.h**,去掉该文件中的预编译命令**#ifndef RT_CONFIG_H__**,**#define RT_CONFIG_H__**,**#ifndef RT_CONFIG_H__**,**#endif**,一定要执行这步操作，否则会编译报错。
 
-![remove ifdef](figures/remove ifdef.png)
+![remove ifdef](figures/remove_ifdef.png)
 
 ![remove end](figures/9.png)
 2.执行以下命令生成makefile工程
@@ -102,10 +103,10 @@ scons --target=makefile
 3.在命令行输入**make**编译工程
 
 ![make](figures/10.png)
-4.运行以下命令，启动qemu运行编译出rtthread.elf，`/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32`为Linux环境的工具链路径，这里设置为用户的工具链路径。
+4.运行以下命令，启动qemu(改为自己的qemu路径或者加入环境变量)运行编译出rtthread.elf，`/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32`为Linux环境的工具链路径，这里设置为用户的工具链路径。
 
 ```shell
-/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio
+/home/song/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio
 ```
 
 BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本信息，Tap键可以查看支持的命令，运行结果如下：
@@ -147,7 +148,7 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 9.在使用IDE编译的工程的根目录下运行以下命令，结果和**3.2.1**运行的结果一致IDE下的工程便配置完成，至此，IDE导入Core-V-MCU的RT-Thread工程的导入与运行测试完成。
 
 ```shell
-/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio
+/home/song/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio
 ```
 
 ### 3.4调试配置
@@ -168,7 +169,7 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 
 3.导入片上外设寄存器文件
 
-文件路径`/home/wangshun/OpenHW/CORE-V-SDKv0.0.0.4/registers/peripheral`,具体路径根据用户安装的SDK路径配置。
+文件路径`/home/song/OpenHW/CORE-V-SDKv0.0.0.4/registers/peripheral`,具体路径根据用户安装的SDK路径配置。
 
 ![svd](figures/19.png)
 
@@ -181,7 +182,7 @@ BSP支持RT-Thread的Finsh组件，输入version可以查看rt-thread的版本�
 4.运行下述指令
 
 ```shell
-/home/wangshun/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio -s -S
+/home/song/bin/qemu-riscv/bin/qemu-system-riscv32 -M core_v_mcu -bios none -kernel rtthread.elf -nographic -monitor none -serial stdio -s -S
 ```
 
 5.点击debug开始调试
